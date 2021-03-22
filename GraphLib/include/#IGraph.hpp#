@@ -1,0 +1,59 @@
+/*
+** Arcade | Graph
+** Sarah-Keppler
+*/
+
+#ifndef ARCADE_GRAPH_HPP
+#define ARCADE_GRAPH_HPP
+
+#include "Component.hpp"
+
+namespace GraphLib
+{
+    class IGraph {
+    public:
+	IGraph() = default;
+	~IGraph() = default;
+
+	/**
+	 * @brief Play the role of the constructor. Store the graphical libs available and create all the components/
+	 * 
+	 * @param current graphical lib index.
+	 * @param graphical libs array.
+	 */
+	void init(int const idx, std::vector<IGraph> const list);
+
+	/**
+	 * @brief Destroy all the components.
+	 */
+	void destroy();
+
+	/**
+	 * @brief Display an image (= pixel array) according to its components.
+	 * 
+	 * @param position.
+	 * @param form.
+	 * @param color.
+	 * @param size.
+	 */
+	void displayImage(Position &pos, Form &form, Color &color, Size &size);
+    };
+}
+/*
+__attribute__((constructor))
+void start(void)
+{
+    smfl = new SFMLController();
+}
+
+__attribute__((destructor))
+void end(void)
+{
+    delete smfl;
+}
+
+extern "C" SFMLController *endPoint(void)
+{
+    return (smfl);
+    }
+*/
