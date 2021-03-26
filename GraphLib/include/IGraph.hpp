@@ -7,6 +7,7 @@
 #define ARCADE_GRAPH_HPP
 
 #include <vector>
+#include <memory>
 #include "Component.hpp"
 
 namespace GraphLib
@@ -53,8 +54,15 @@ namespace GraphLib
 	 * @param size.
 	 */
 	virtual void displayImage(Position &pos, Form &form, Color &color, Size &size) const = 0;
+
     };
 }
+	// /**
+	//  * @brief end point of the library.
+	//  *
+	//  * @return Must return an unique_ptr of the graphic library class
+	//  */
+	// virtual std::unique_ptr<IGraph> endPoint(void) const = 0;
 
 // Add in sub classes. Why not a unique_ptr instead of a pointer?
 /*

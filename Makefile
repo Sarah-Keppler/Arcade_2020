@@ -1,6 +1,8 @@
 ##
-## Arcade
-## Sarah-Keppler
+## EPITECH PROJECT, 2021
+## Arcade_2020
+## File description:
+## Makefile
 ##
 
 CC		=	g++
@@ -14,30 +16,30 @@ PATH_GAME	=	./Games/
 all:	core graphicals games
 
 core:
-	make -C $(PATH_ARCADE)
-	cp $(PATH_ARCADE)/arcade ./
+	make -sC $(PATH_ARCADE)
+	@cp $(PATH_ARCADE)/arcade ./
 
 graphicals:
-	make -C $(PATH_GRAPH)
+	make -sC $(PATH_GRAPH)
 
 games:
-	make -C $(PATH_GAME)
+	make -sC $(PATH_GAME)
 
 clean:
-	rm -f *~ *.vgcore
-	make -C $(PATH_ARCADE) clean
-	make -C $(PATH_GRAPH) clean
-	make -C $(PATH_GAME) clean
+	@rm -f *~ *.vgcore
+	@make -sC $(PATH_ARCADE) clean
+	@make -sC $(PATH_GRAPH) clean
+	@make -sC $(PATH_GAME) clean
 
 fclean: clean
-	$(RM) *~ arcade ./lib/*.so
-	make -C $(PATH_ARCADE) fclean
-	make -C $(PATH_GRAPH) fclean
-	make -C $(PATH_GAME) fclean
+	@$(RM) *~ arcade ./lib/*.so
+	@make -sC $(PATH_ARCADE) fclean
+	@make -sC $(PATH_GRAPH) fclean
+	@make -sC $(PATH_GAME) fclean
 
 re: fclean all
-	make -C $(PATH_ARCADE) re
-	make -C $(PATH_GRAPH) re
-	make -C $(PATH_GAME) re
+	@make -sC $(PATH_ARCADE) re
+	@make -sC $(PATH_GRAPH) re
+	@make -sC $(PATH_GAME) re
 
 .PHONY: all clean fclean re core graphicals games

@@ -50,11 +50,18 @@ namespace Game
 	 * @brief Simulate the game.
 	 */
 	virtual void update() const = 0;
-	
+
 	/**
 	 * @brief Display every drawable element.
 	 */
 	virtual void display() const noexcept = 0;
+
+	/**
+	 * @brief end point of the library.
+	 *
+	 * @return Must return an unique_ptr of the game library class
+	 */
+	virtual std::unique_ptr<IGame> endPoint(void) const = 0;
 
 	std::size_t _ilib;
 	std::vector<GraphLib::IGraph> const _libs;

@@ -9,9 +9,17 @@
 #include <string>
 #include <vector>
 #include <memory>
+#include <fcntl.h>
+#include <dlfcn.h>
+#include "../../Error/Error.hpp"
+#include "../../Games/include/IGame.hpp"
+#include "../../GraphLib/include/IGraph.hpp"
 
 namespace Arcade
 {
+	/**
+	 * @tparam T the instance of IGame or IGrapLib
+	 */
     template<typename T>
     class Loader {
     public:
@@ -26,21 +34,15 @@ namespace Arcade
 	 * @brief Load the library given in the path.
 	 *
 	 * @param library path.
-	 * @param endPoint (?).
+	 * @param endPointName end point name.
 	 *
 	 * @return a pointer of the library class.
 	 */
-	// Return a unique_ptr instead?
-	//std::unique_ptr<T> getInstance(std::string const &path, std::string const &endPoint);
-	T *getInstance(std::string const &path, std::string const &endPoint);
+    std::unique_ptr<T> getInstance(std::string const path, std::string const endPointName);
+
     private:
 	// Array of library pointers in order to close them later.
 	std::vector<void *> _handle;
-
-	// Useful? Can not just create a local variable?
-	T *_lib;
-	// Same from above.
-	T *(*_endPoint)(void);
     };
 }
 

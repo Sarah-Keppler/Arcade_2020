@@ -6,7 +6,9 @@
 #ifndef ARCADE_CORE_HPP
 #define ARCADE_CORE_HPP
 
+#include <iostream>
 #include "Loader.hpp"
+#include "../../Error/Error.hpp"
 #include "../../GraphLib/include/IGraph.hpp"
 #include "../../Games/include/IGame.hpp"
 
@@ -54,11 +56,16 @@ namespace Arcade
 	 */
 	void display() const noexcept;
 
-	Arcade::Loader _loader;
-	// Why not unique_ptr?
-      	std::vector<GraphLib::IGraph *> _libs; //Potential names: _libraries, _graphlibs
-	std::vector<Game::IGame *> _games;
-	std::size_t _ilib; // Potential names: _clib, _idxlib
+	// Loader of graphics libraries
+	Arcade::Loader <GraphLib::IGraph>_graphLoader;
+	// Loader of games libraries
+	Arcade::Loader <GraphLib::IGraph>_gameLoader;
+	// List of graphics libraries (Potential names: _libraries, _graphlibs)
+	std::vector<std::unique_ptr<GraphLib::IGraph>> _graph; 
+	// List of graphics libraries
+	std::vector<std::unique_ptr<Game::IGame>> _games;
+	// Potential names: _clib, _idxlib
+	std::size_t _ilib;
 	std::size_t _evt;
 	std::vector<GraphLib::Life> _life;
 	std::vector<GraphLib::Position> _pos;

@@ -11,7 +11,7 @@ namespace Arcade
 {
     enum class ColorIdx : uint8_t
     {
-	WHITE = 0,
+	WHITE,
 	BLACK,
 	YELLOW,
 	YELLOW_GREEN,
@@ -26,6 +26,13 @@ namespace Arcade
 	ORANGE,
 	YELLOW_ORANGE
     };
+
+    typedef struct Color_s
+    {
+	uint8_t r;
+	uint8_t g;
+	uint8_t b;
+    }Color;
 
     Arcade::Color Colors[14] =
     {
@@ -46,7 +53,7 @@ namespace Arcade
 
     enum class FormIdx : uint8_t
     {
-	SQUARE = 0,
+	SQUARE,
 	RECT,
 	CIRCLE,
 	TRIANGLE,
@@ -55,7 +62,7 @@ namespace Arcade
 
     enum class Keywords : uint8_t
     {
-	MV_Z = 0,
+	MV_Z,
 	MV_S,
 	MV_Q,
 	MV_D,
