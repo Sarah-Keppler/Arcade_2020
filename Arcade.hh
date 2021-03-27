@@ -3,36 +3,35 @@
 ** Sarah-Keppler
 */
 
-#include "GraphLib/include/Component.hpp"
+#include "Graphs/include/Component.hpp"
 
 // uint8_t is from cstdint <- c library. Good idea?
 
 namespace Arcade
 {
-    enum class ColorIdx : uint8_t
+    enum class Type : uint8_t
     {
-	WHITE,
-	BLACK,
-	YELLOW,
-	YELLOW_GREEN,
-	GREEN,
-	BLUE_GREEN,
-	BLUE,
-	BLUE_VIOLET,
-	VIOLET,
-	RED_VIOLET,
-	RED,
-	RED_ORANGE,
-	ORANGE,
-	YELLOW_ORANGE
+	GAME = 0,
+	GRAPH
     };
 
-    typedef struct Color_s
+    enum class ColorIdx : char
     {
-	uint8_t r;
-	uint8_t g;
-	uint8_t b;
-    }Color;
+	WHITE = 'W',
+	BLACK = 'B',
+	YELLOW = 'Y',
+	YELLOW_GREEN = 'y',
+	GREEN = 'G',
+	BLUE_GREEN = 'g',
+	BLUE = 'B',
+	BLUE_VIOLET = 'b',
+	VIOLET = 'V',
+	RED_VIOLET = 'v',
+	RED = 'R',
+	RED_ORANGE = 'r',
+	ORANGE = 'O',
+	YELLOW_ORANGE = 'o'
+    };
 
     Arcade::Color Colors[14] =
     {
@@ -53,7 +52,7 @@ namespace Arcade
 
     enum class FormIdx : uint8_t
     {
-	SQUARE,
+	SQUARE = 0,
 	RECT,
 	CIRCLE,
 	TRIANGLE,
@@ -62,7 +61,7 @@ namespace Arcade
 
     enum class Keywords : uint8_t
     {
-	MV_Z,
+	MV_Z = 0,
 	MV_S,
 	MV_Q,
 	MV_D,

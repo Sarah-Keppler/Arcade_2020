@@ -1,16 +1,14 @@
 ##
-## EPITECH PROJECT, 2021
-## Arcade_2020
-## File description:
-## Makefile
+## Arcade
+## Sarah-Keppler
 ##
 
-CC		=	g++
+CC	=	g++
 
-RM		=	rm -f
+RM	=	rm -f
 
 PATH_ARCADE	=	./Core/
-PATH_GRAPH	=	./GraphLib/
+PATH_GRAPH	=	./Graphs/
 PATH_GAME	=	./Games/
 
 all:	core graphicals games

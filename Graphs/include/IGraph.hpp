@@ -7,8 +7,9 @@
 #define ARCADE_GRAPH_HPP
 
 #include <vector>
-#include <memory>
+#include <string>
 #include "Component.hpp"
+#include "../../Arcade.hh"
 
 namespace GraphLib
 {
@@ -30,6 +31,16 @@ namespace GraphLib
 	 * @brief Play the role of the deconstructor. Destroy all the components.
 	 */
 	virtual void close() const = 0;
+
+	/**
+	 * @brief Get the library type.
+	 */
+	virtual Arcade::Type getType() const noexcept = 0;
+
+	/**
+	 * @brief Get the library name.
+	 */
+	virtual std::string getName() const noexcept = 0;
 
 	/**
 	 * @brief Change the title of the window.
@@ -54,15 +65,33 @@ namespace GraphLib
 	 * @param size.
 	 */
 	virtual void displayImage(Position &pos, Form &form, Color &color, Size &size) const = 0;
+    };
 
+    class AGraph : public IGraph
+    {
+    public:
+        /**
+	 * @brief Set the type and the name of the library.
+	 *
+	 * @param type of the library.
+	 * @param name of the library.
+	 */
+	AGraph(Arcade::Type const type, std::string const &name) noexcept;
+
+	/**
+	 * @brief Get the library type.
+	 */
+	Arcade::Type getType() const noexcept;
+
+	/**
+	 * @brief Get the library name.
+	 */
+	std::string getName() const noexcept;
+    protected:
+	Arcade::Type const _type;
+	std::string const _name;
     };
 }
-	// /**
-	//  * @brief end point of the library.
-	//  *
-	//  * @return Must return an unique_ptr of the graphic library class
-	//  */
-	// virtual std::unique_ptr<IGraph> endPoint(void) const = 0;
 
 // Add in sub classes. Why not a unique_ptr instead of a pointer?
 /*

@@ -6,10 +6,9 @@
 #ifndef ARCADE_CORE_HPP
 #define ARCADE_CORE_HPP
 
-#include <iostream>
+#include <memory>
 #include "Loader.hpp"
-#include "../../Error/Error.hpp"
-#include "../../GraphLib/include/IGraph.hpp"
+#include "../../Graph/include/IGraph.hpp"
 #include "../../Games/include/IGame.hpp"
 
 namespace Arcade
@@ -56,23 +55,18 @@ namespace Arcade
 	 */
 	void display() const noexcept;
 
-	// Loader of graphics libraries
-	Arcade::Loader <GraphLib::IGraph>_graphLoader;
-	// Loader of games libraries
-	Arcade::Loader <GraphLib::IGraph>_gameLoader;
-	// List of graphics libraries (Potential names: _libraries, _graphlibs)
-	std::vector<std::unique_ptr<GraphLib::IGraph>> _graph; 
-	// List of graphics libraries
+	Arcade::Loader<Graph::IGraph> _graphLoader;
+	Arcade::Loader<Game::IGame> _gameGames;
+      	std::vector<std::unique_ptr<Graph::IGraph>> _graphs;
 	std::vector<std::unique_ptr<Game::IGame>> _games;
-	// Potential names: _clib, _idxlib
-	std::size_t _ilib;
+	std::size_t _clib;
 	std::size_t _evt;
-	std::vector<GraphLib::Life> _life;
-	std::vector<GraphLib::Position> _pos;
-	std::vector<GraphLib::Size> _size;
-	std::vector<GraphLib::Color> _color;
-	std::vector<GraphLib::Form> _form;
-	std::vector<GraphLib::Text> _text;
+	std::vector<Graph::Life> _life;
+	std::vector<Graph::Position> _pos;
+	std::vector<Graph::Size> _size;
+	std::vector<Graph::Color> _color;
+	std::vector<Graph::Form> _form;
+	std::vector<Graph::Text> _text;
     };
 }
 

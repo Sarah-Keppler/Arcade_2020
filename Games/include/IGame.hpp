@@ -7,7 +7,9 @@
 #define ARCADE_GAME_HPP
 
 #include <vector>
+#include <string>
 #include "../../GraphLib/include/IGraph.hpp"
+#include "../../Arcade.hh"
 
 namespace Game
 {
@@ -30,11 +32,21 @@ namespace Game
 	virtual void leave() const noexcept = 0;
 
 	/**
+	 * @brief Get the type of the library.
+	 */
+	virtual Arcade::Type getType() const noexcept = 0;
+
+	/**
+	 * @brief Get the name of the library.
+	 */
+	virtual std::string getName() const noexcept = 0;
+
+	/**
 	 * @brief Load, run and display the game.
 	 *
-	 * @return 1, or 0 if the window is closed.
+	 * @return index of the keywords enum.
 	 */
-	virtual int play() const = 0;
+	virtual Arcade::Keywords play() const = 0;
     protected:
 	/**
 	 * @brief If an event happened, put its id in _evt.
@@ -50,21 +62,14 @@ namespace Game
 	 * @brief Simulate the game.
 	 */
 	virtual void update() const = 0;
-
+	
 	/**
 	 * @brief Display every drawable element.
 	 */
 	virtual void display() const noexcept = 0;
 
-	/**
-	 * @brief end point of the library.
-	 *
-	 * @return Must return an unique_ptr of the game library class
-	 */
-	virtual std::unique_ptr<IGame> endPoint(void) const = 0;
-
 	std::size_t _ilib;
-	std::vector<GraphLib::IGraph> const _libs;
+	std::vector<GraphLib::IGraph> const _libs;	
 	/*
 	  Note: Use  emplace_back instead of push_back to gain more performance
 	  Perhaps somethign else than a vector?
@@ -75,6 +80,35 @@ namespace Game
 	std::vector<GraphLib::Color> _color;
 	std::vector<GraphLib::Form> _form;
 	std::vector<GraphLib::Text> _text;
+    };
+
+    class AGame : protected IGame
+    {
+    public:
+	/**
+	 * @brief Set the type and the name of the library.
+	 *
+	 * @param type of the library.
+	 * @param name of the library.
+	 */
+	AGame(Arcade::Type const type, std::string const &name) noexcept;
+
+	/**
+	 * @brief Get the type of the library.
+	 *
+	 * @return type of the library.
+	 */
+	Arcade::Type getType() const noexcept;
+
+	/**
+	 * @brief Get the name of the library.
+	 *
+	 * @return name of the library.
+	 */
+	std::string getName() const noexcept;
+    protected:
+	Arcade::Type const _type;
+	std::string const _name;
     };
 }
 

@@ -1,32 +1,25 @@
 ##
-## EPITECH PROJECT, 2021
-## Arcade_2020
-## File description:
-## Makefile
+## Arcade
+## Sarah-Keppler
 ##
 
 NAME	=	arcade
 
-CC		=	g++
+CC	=	g++
 
-RM		=	rm -rf
+RM	=	rm -rf
 
-## ========================================================================== ##
-PATH_CORE			=	./sources/
-CORE				=	Loader.cpp						\
-						Core.cpp						\
-						main.cpp
+PATH_CORE	=	./src/
+CORE	=	Loader.cpp	\
+		Core.cpp	\
+		main.cpp
 
-## ========================================================================== ##
-PATH_ERROR			=	./../Error/
-ERROR				=	Error.cpp
+SRCS	=	$(addprefix $(PATH_CORE), $(CORE))	\
+		../Error/Error.cpp
 
-SRCS		=	$(addprefix $(PATH_CORE), $(CORE))		\
-				$(addprefix $(PATH_ERROR), $(ERROR))
+OBJS	=	 $(SRC:.cpp=.o)
 
-OBJS		=	 $(SRC:.cpp=.o)
-
-CXXFLAGS	+= 	-Wall -Wextra -Werror -I./include/ -ldl
+CXXFLAGS += 	-Wall -Wextra -Werror -I./include/
 
 all: $(NAME)
 
