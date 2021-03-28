@@ -33,21 +33,21 @@ namespace Arcade
 	YELLOW_ORANGE = 'o'
     };
 
-    Arcade::Color Colors[14] =
+    std::array<Graph::Color, 14> Colors =
     {
-	Arcade::Color{255, 255, 255},
-	Arcade::Color{255, 255, 0},
-	Arcade::Color{0, 155, 0},
-	Arcade::Color{0, 121, 0},
-	Arcade::Color{0, 174, 174},
-	Arcade::Color{0, 0, 255},
-	Arcade::Color{115, 8, 165},
-	Arcade::Color{186, 0, 255},
-	Arcade::Color{204, 0, 175},
-	Arcade::Color{255, 0, 0},
-	Arcade::Color{255, 70, 0},
-	Arcade::Color{255, 127, 0},
-	Arcade::Color{254, 179, 0}
+	Graph::Color{255, 255, 255},
+	Graph::Color{255, 255, 0},
+	Graph::Color{0, 155, 0},
+	Graph::Color{0, 121, 0},
+	Graph::Color{0, 174, 174},
+	Graph::Color{0, 0, 255},
+	Graph::Color{115, 8, 165},
+	Graph::Color{186, 0, 255},
+	Graph::Color{204, 0, 175},
+	Graph::Color{255, 0, 0},
+	Graph::Color{255, 70, 0},
+	Graph::Color{255, 127, 0},
+	Graph::Color{254, 179, 0}
     };
 
     enum class FormIdx : uint8_t
