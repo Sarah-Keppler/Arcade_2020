@@ -8,8 +8,9 @@
 
 #include <vector>
 #include <string>
-#include "../../GraphLib/include/IGraph.hpp"
-#include "../../Arcade.hh"
+#include <memory>
+#include "../../Graphs/include/IGraph.hpp"
+//#include "../../Arcade.hh"
 
 namespace Game
 {
@@ -19,22 +20,15 @@ namespace Game
 	~IGame() = default;
 
 	/**
-	 * @brief Play the role of the constructor. Create the game and keep the graphical libs list.
-	 * 
-	 * @param current graphical lib index.
-	 * @param graphical libs array.
+	 * @brief Load a scene and create all the components
 	 */
-	virtual void init(int const idx, std::vector<GraphLib::IGraph> const list) const noexcept = 0;
-
-	/**
-	 * @brief Play the role of the deconstructor. Destroy all the graphical elements.
-	 */
-	virtual void leave() const noexcept = 0;
+	virtual void load(std::unique_ptr<Graph::IGraph> lib) const = 0;
 
 	/**
 	 * @brief Get the type of the library.
 	 */
-	virtual Arcade::Type getType() const noexcept = 0;
+	//virtual Arcade::Type getType() const noexcept = 0;
+	virtual int getType() const noexcept = 0;
 
 	/**
 	 * @brief Get the name of the library.
@@ -42,44 +36,34 @@ namespace Game
 	virtual std::string getName() const noexcept = 0;
 
 	/**
-	 * @brief Load, run and display the game.
+	 * @brief Retrieve the events and react if possitble immediately.
 	 *
-	 * @return index of the keywords enum.
+	 * @return event type.
 	 */
-	virtual Arcade::Keywords play() const = 0;
+	//virtual Arcade::Keywords handleEvents() const noexcept = 0;
+	virtual int handleEvents() const noexcept = 0;
+
+	/**
+	 * @brief React to the events related on the elapsed time and simulate the game.
+	 *
+	 * @param elapsed time.
+	 */
+	virtual void handleUpdate(float elapsedTime) const noexcept = 0; //perhaps an int
     protected:
-	/**
-	 * @brief If an event happened, put its id in _evt.
-	 */
-	virtual void event() const = 0;
-
-	/**
-	 * @brief React according to the _evt value.
-	 */
-	virtual void preUpdate() const = 0;
-
-	/**
-	 * @brief Simulate the game.
-	 */
-	virtual void update() const = 0;
-	
-	/**
-	 * @brief Display every drawable element.
-	 */
-	virtual void display() const noexcept = 0;
-
-	std::size_t _ilib;
-	std::vector<GraphLib::IGraph> const _libs;	
+	std::vector<Graph::IGraph> _lib;
+	//Arcade::Keywords _evtType;
+	int _evtType;
+	char _evt;
 	/*
 	  Note: Use  emplace_back instead of push_back to gain more performance
 	  Perhaps somethign else than a vector?
 	*/
-	std::vector<GraphLib::Life> _life;
-	std::vector<GraphLib::Position> _pos;
-	std::vector<GraphLib::Size> _size;
-	std::vector<GraphLib::Color> _color;
-	std::vector<GraphLib::Form> _form;
-	std::vector<GraphLib::Text> _text;
+	std::vector<Graph::Life> _life;
+	std::vector<Graph::Position> _pos;
+	std::vector<Graph::Size> _size;
+	std::vector<Graph::Color> _color;
+	std::vector<Graph::Form> _form;
+	std::vector<Graph::Text> _text;
     };
 
     class AGame : protected IGame
@@ -91,14 +75,16 @@ namespace Game
 	 * @param type of the library.
 	 * @param name of the library.
 	 */
-	AGame(Arcade::Type const type, std::string const &name) noexcept;
+	//AGame(Arcade::Type const type, std::string const &name) noexcept;
+	AGame(int const type, std::string const &name) noexcept;
 
 	/**
 	 * @brief Get the type of the library.
 	 *
 	 * @return type of the library.
 	 */
-	Arcade::Type getType() const noexcept;
+	//Arcade::Type getType() const noexcept;
+	int getType() const noexcept;
 
 	/**
 	 * @brief Get the name of the library.
@@ -107,31 +93,10 @@ namespace Game
 	 */
 	std::string getName() const noexcept;
     protected:
-	Arcade::Type const _type;
+	//Arcade::Type const _type;
+	int const _type;
 	std::string const _name;
     };
 }
-
-// Add in sub classes. Why not a unique_ptr instead of a pointer?
-/*
-SFMLController *sfml = nullptr;
-
-__attribute__((constructor))
-void start(void)
-{
-    smfl = new SFMLController();
-}
-
-__attribute__((destructor))
-void end(void)
-{
-    delete smfl;
-}
-
-extern "C" SFMLController *endPoint(void)
-{
-    return (smfl);
-}
-*/
 
 #endif /* ARCADE_GAME_HPP */

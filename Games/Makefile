@@ -12,31 +12,31 @@ RM	=	rm -rf
 
 NAME_NIBBLER	=	arcade_nibbler.so
 NIBBLER		=	./src/Nibbler.cpp 	\
-			./src/IGame.cpp		\
+			./src/AGame.cpp		\
 			../Error/Error.cpp
 OBJ_NIBBLER	=	$(NIBBLER:.cpp=.o)
 
 NAME_PACMAN	=	arcade_pacman.so
 PACMAN		=	./src/Pacman.cpp 	\
-			./src/IGame.cpp		\
+			./src/AGame.cpp		\
 			../Error/Error.cpp
 OBJ_PACMAN	=	$(PACMAN:.cpp=.o)
 
 NAME_QIX	=	arcade_qix++.so
 QIX		=	./src/Qix.cpp 		\
-			./src/IGame.cpp		\
+			./src/AGame.cpp		\
 			../Error/Error.cpp
 OBJ_QIX		=	$(QIX:.cpp=.o)
 
 NAME_CENTIPEDE	=	arcade_centipede.so
 CENTIPEDE	=	./src/Centipede.cpp 	\
-			./src/IGame.cpp		\
+			./src/AGame.cpp		\
 			../Error/Error.cpp
 OBJ_CENTIPEDE	=	$(CENTIPEDE:.cpp=.o)
 
 NAME_SOLARFOX	=	arcade_solarfox.so
 SOLARFOX	=	./src/Solarfox.cpp 	\
-			./src/IGame.cpp		\
+			./src/AGame.cpp		\
 			../Error/Error.cpp
 OBJ_SOLARFOX	=	$(SOLARFOX:.cpp=.o)
 
