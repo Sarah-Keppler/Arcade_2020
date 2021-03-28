@@ -6,7 +6,7 @@
 #ifndef ARCADE_GRAPH_ICOMPONENT
 #define ARCADE_GRAPH_ICOMPONENT
 
-namespace GraphLib
+namespace Graph
 {
     struct IComponent
     {	
