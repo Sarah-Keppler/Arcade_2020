@@ -9,9 +9,9 @@
 #include <vector>
 #include <string>
 #include "Component.hpp"
-#include "../../Arcade.hh"
+//#include "../../Arcade.hh"
 
-namespace GraphLib
+namespace Graph
 {
     class IGraph
     {
@@ -35,7 +35,8 @@ namespace GraphLib
 	/**
 	 * @brief Get the library type.
 	 */
-	virtual Arcade::Type getType() const noexcept = 0;
+	//virtual Arcade::Type getType() const noexcept = 0;
+	virtual int getType() const noexcept = 0;
 
 	/**
 	 * @brief Get the library name.
@@ -57,6 +58,21 @@ namespace GraphLib
 	virtual void setIcon(std::string const &icon) const noexcept = 0;
 
 	/**
+	 * @brief Retrieve the current event.
+	 *
+	 * @return current event type.
+	 */
+//	virtual Arcade::Keywords getEvent() const noexcept = 0;
+	virtual int getEvent() const noexcept = 0;
+
+	/**
+	 * @brief Retrive the letter key of the last event.
+	 *
+	 * @return char of the letter key.
+	 */
+	virtual char getEventChar() const noexcept = 0;
+
+	/**
 	 * @brief Display an image (= pixel array) according to its components.
 	 * 
 	 * @param position.
@@ -65,6 +81,10 @@ namespace GraphLib
 	 * @param size.
 	 */
 	virtual void displayImage(Position &pos, Form &form, Color &color, Size &size) const = 0;
+    protected:
+	//Arcade::Keywords _evtType;
+	int _evtType;
+	char _evt;
     };
 
     class AGraph : public IGraph
@@ -76,19 +96,22 @@ namespace GraphLib
 	 * @param type of the library.
 	 * @param name of the library.
 	 */
-	AGraph(Arcade::Type const type, std::string const &name) noexcept;
+	//AGraph(Arcade::Type const type, std::string const &name) noexcept;
+	AGraph(int const type, std::string const &name) noexcept;
 
 	/**
 	 * @brief Get the library type.
 	 */
-	Arcade::Type getType() const noexcept;
+	//Arcade::Type getType() const noexcept;
+	int getType() const noexcept;
 
 	/**
 	 * @brief Get the library name.
 	 */
 	std::string getName() const noexcept;
     protected:
-	Arcade::Type const _type;
+	int const _type;
+	//Arcade::Type const _type;
 	std::string const _name;
     };
 }

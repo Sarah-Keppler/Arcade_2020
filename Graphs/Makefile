@@ -12,79 +12,79 @@ RM	=	rm -rf
 
 NAME_NCURSES	=	arcade_ncurses.so
 NCURSES		=	./src/NCurses.cpp	\
-			./src/IGraph.cpp  	\
+			./src/AGraph.cpp  	\
 			../Error/Error.cpp
 OBJ_NCURSES	=	$(NCURSES:.cpp=.o)
 
 NAME_SDL2	=	arcade_sdl2.so
 SDL2		=	./src/SDL2.cpp 		\
-			./src/IGraph.cpp  	\
+			./src/AGraph.cpp  	\
 			../Error/Error.cpp
 OBJ_SDL2	=	$(SDL2:.cpp=.o)
 
 NAME_NDK	=	arcade_ndk++.so
 NDK		=	./src/NDK++.cpp 	\
-			./src/IGraph.cpp  	\
+			./src/AGraph.cpp  	\
 			../Error/Error.cpp
 OBJ_NDK		=	$(NDK:.cpp=.o)
 
 NAME_AA-LIB	=	arcade_aalib.so
 AA-LIB		=	./src/aa-lib.cpp 	\
-			./src/IGraph.cpp  	\
+			./src/AGraph.cpp  	\
 			../Error/Error.cpp
 OBJ_AA-LIB	=	$(AA-LIB:.cpp=.o)
 
 NAME_LIBCACA	=	arcade_libcaca.so
 LIBCACA		=	./src/Libcaca.cpp 	\
-			./src/IGraph.cpp  	\
+			./src/AGraph.cpp  	\
 			../Error/Error.cpp
 OBJ_LIBCACA	=	$(LIBCACA:.cpp=.o)
 
 NAME_ALLEGRO5	=	arcade_allegro5.so
 ALLEGRO5	=	./src/Allegro5.cpp 	\
-			./src/IGraph.cpp  	\
+			./src/AGraph.cpp  	\
 			../Error/Error.cpp
 OBJ_ALLEGRO5	=	$(ALLEGRO5:.cpp=.o)
 
 NAME_XLIB	=	arcade_xlib.so
 XLIB		=	./src/XLib.cpp 		\
-			./src/IGraph.cpp  	\
+			./src/AGraph.cpp  	\
 			../Error/Error.cpp
 OBJ_XLIB	=	$(XLIB:.cpp=.o)
 
 NAME_GTK	=	arcade_gtk+.so
 GTK		=	./src/GTK+.cpp 		\
-			./src/IGraph.cpp  	\
+			./src/AGraph.cpp  	\
 			../Error/Error.cpp
 OBJ_GTK		=	$(GTK:.cpp=.o)
 
 NAME_SFML	=	arcade_sfml.so
 SFML		=	./src/SFML.cpp 		\
-			./src/IGraph.cpp  	\
+			./src/AGraph.cpp  	\
 			../Error/Error.cpp
 OBJ_SFML	=	$(SFML:.cpp=.o)
 
 NAME_IRRLICHT	=	arcade_irrlicht.so
 IRRLICHT	=	./src/Irrlicht.cpp 	\
-			./src/IGraph.cpp  	\
+			./src/AGraph.cpp  	\
 			../Error/Error.cpp
 OBJ_IRRLICHT	=	$(IRRLICHT:.cpp=.o)
 
 NAME_OPENGL	=	arcade_opengl.so
 OPENGL		=	./src/OpenGL.cpp 	\
-			./src/IGraph.cpp  	\
+			./src/AGraph.cpp  	\
 			../Error/Error.cpp
 OBJ_OPENGL	=	$(OPENGL:.cpp=.o)
 
 NAME_VULKAN	=	arcade_vulkan.so
 VULKAN		=	./src/Vulkan.cpp 	\
-			./src/IGraph.cpp  	\
+			./src/AGraph.cpp  	\
 			../Error/Error.cpp
 OBJ_VULKAN	=	$(VULKAN:.cpp=.o)
 
 NAME_QT5	=	arcade_qt5.so
 QT5		=	./src/Qt5.cpp 		\
-			./src/IGraph.cpp  	\
+			./src/AGraph.cpp  	\
 			../Error/Error.cpp
 OBJ_QT5		=	$(QT5:.cpp=.o)
 
