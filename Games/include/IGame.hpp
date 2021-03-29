@@ -10,7 +10,7 @@
 #include <string>
 #include <memory>
 #include "../../Graphs/include/IGraph.hpp"
-//#include "../../Arcade.hh"
+#include "../../Arcade.hh"
 
 namespace Game
 {
@@ -27,8 +27,7 @@ namespace Game
 	/**
 	 * @brief Get the type of the library.
 	 */
-	//virtual Arcade::Type getType() const noexcept = 0;
-	virtual int getType() const noexcept = 0;
+	virtual Arcade::Type getType() const noexcept = 0;
 
 	/**
 	 * @brief Get the name of the library.
@@ -40,19 +39,17 @@ namespace Game
 	 *
 	 * @return event type.
 	 */
-	//virtual Arcade::Keywords handleEvents() const noexcept = 0;
-	virtual int handleEvents() const noexcept = 0;
+	virtual Arcade::Keywords handleEvents() const noexcept = 0;
 
 	/**
 	 * @brief React to the events related on the elapsed time and simulate the game.
 	 *
 	 * @param elapsed time.
 	 */
-	virtual void handleUpdate(float elapsedTime) const noexcept = 0; //perhaps an int
+	virtual void handleUpdate(double elapsedTime) const noexcept = 0;
     protected:
 	std::vector<Graph::IGraph> _lib;
-	//Arcade::Keywords _evtType;
-	int _evtType;
+	Arcade::Keywords _evtType;
 	char _evt;
 	/*
 	  Note: Use  emplace_back instead of push_back to gain more performance
@@ -75,16 +72,14 @@ namespace Game
 	 * @param type of the library.
 	 * @param name of the library.
 	 */
-	//AGame(Arcade::Type const type, std::string const &name) noexcept;
-	AGame(int const type, std::string const &name) noexcept;
+	AGame(Arcade::Type const type, std::string const &name) noexcept;
 
 	/**
 	 * @brief Get the type of the library.
 	 *
 	 * @return type of the library.
 	 */
-	//Arcade::Type getType() const noexcept;
-	int getType() const noexcept;
+	Arcade::Type getType() const noexcept;
 
 	/**
 	 * @brief Get the name of the library.
@@ -93,8 +88,7 @@ namespace Game
 	 */
 	std::string getName() const noexcept;
     protected:
-	//Arcade::Type const _type;
-	int const _type;
+	Arcade::Type const _type;
 	std::string const _name;
     };
 }
