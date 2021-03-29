@@ -50,9 +50,8 @@ namespace Graph
 
     struct Text : public IComponent
     {
-	Text();
-
 	Text(std::string text) : _text(text){};
+
 	std::string _text;
     };
 
