@@ -3,6 +3,10 @@
 ** Sarah-Keppler
 */
 
+#ifndef ARCADE_HH
+#define ARCADE_HH
+
+#include <array>
 #include "Graphs/include/Component.hpp"
 
 // uint8_t is from cstdint <- c library. Good idea?
@@ -33,7 +37,7 @@ namespace Arcade
 	YELLOW_ORANGE = 'o'
     };
 
-    std::array<Graph::Color, 14> Colors =
+    std::array<Graph::Color, 13> Colors =
     {
 	Graph::Color{255, 255, 255},
 	Graph::Color{255, 255, 0},
@@ -73,3 +77,5 @@ namespace Arcade
 	MENU
     };
 }
+
+#endif /* ARCADE_HH */
