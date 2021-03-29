@@ -7,6 +7,7 @@
 #define ARCADE_HH
 
 #include <array>
+#include <map>
 #include "Graphs/include/Component.hpp"
 
 // uint8_t is from cstdint <- c library. Good idea?
@@ -37,21 +38,21 @@ namespace Arcade
 	YELLOW_ORANGE = 'o'
     };
 
-    std::array<Graph::Color, 13> Colors =
-    {
-	Graph::Color{255, 255, 255},
-	Graph::Color{255, 255, 0},
-	Graph::Color{0, 155, 0},
-	Graph::Color{0, 121, 0},
-	Graph::Color{0, 174, 174},
-	Graph::Color{0, 0, 255},
-	Graph::Color{115, 8, 165},
-	Graph::Color{186, 0, 255},
-	Graph::Color{204, 0, 175},
-	Graph::Color{255, 0, 0},
-	Graph::Color{255, 70, 0},
-	Graph::Color{255, 127, 0},
-	Graph::Color{254, 179, 0}
+     //Utiliser Arcade::Colors.at("BLACK") pour accéder à une valeur
+    const std::map<const char *, Graph::Color> Colors {
+	{"WHITE", Graph::Color{255, 255, 255}},
+	{"BLACK", Graph::Color{255, 255, 0}},
+	{"YELLOW", Graph::Color{0, 155, 0}},
+	{"YELLOW_GREEN", Graph::Color{0, 121, 0}},
+	{"GREEN", Graph::Color{0, 174, 174}},
+	{"BLUE_GREEN", Graph::Color{0, 0, 255}},
+	{"BLUE", Graph::Color{115, 8, 165}},
+	{"BLUE_VIOLET", Graph::Color{186, 0, 255}},
+	{"VIOLET", Graph::Color{204, 0, 175}},
+	{"RED_VIOLET", Graph::Color{255, 0, 0}},
+	{"RED", Graph::Color{255, 70, 0}},
+	{"RED_ORANGE", Graph::Color{255, 127, 0}},
+	{"ORANGE", Graph::Color{254, 179, 0}}
     };
 
     enum class FormIdx : uint8_t
