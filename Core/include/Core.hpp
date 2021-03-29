@@ -6,9 +6,12 @@
 #ifndef ARCADE_CORE_HPP
 #define ARCADE_CORE_HPP
 
+#include <vector>
+#include <string>
 #include <memory>
+#include <map>
 #include "Loader.hpp"
-#include "../../Graph/include/IGraph.hpp"
+#include "../../Graphs/include/IGraph.hpp"
 #include "../../Games/include/IGame.hpp"
 
 namespace Arcade
@@ -30,43 +33,20 @@ namespace Arcade
 	~Core();
 
 	/**
-	 * @brief Load, run and display main scene.
+	 * @brief Load, run and display scenes.
 	 */
 	void run();
     private:
-	/**
-	 * @brief If an event happened, put its id in _evt.
-	 */
-	void event();
-
-	/**
-	 * @brief React according to the _evt value.
-	 */
-	// Why not a functions pointer instead?
-	void preUpdate();
-
-	/**
-	 * @brief Simulate the menu.
-	 */
-	void update();
-
-	/**
-	 * @brief Display every drawable element.
-	 */
-	void display() const noexcept;
-
 	Arcade::Loader<Graph::IGraph> _graphLoader;
-	Arcade::Loader<Game::IGame> _gameGames;
+	Arcade::Loader<Game::IGame> _gameLoader;
       	std::vector<std::unique_ptr<Graph::IGraph>> _graphs;
 	std::vector<std::unique_ptr<Game::IGame>> _games;
-	std::size_t _clib;
-	std::size_t _evt;
-	std::vector<Graph::Life> _life;
-	std::vector<Graph::Position> _pos;
-	std::vector<Graph::Size> _size;
-	std::vector<Graph::Color> _color;
-	std::vector<Graph::Form> _form;
-	std::vector<Graph::Text> _text;
+	std::size_t _cgraph, _cgame;
+	Arcade::Keywords _evtType;
+	char _evt;
+	std::map<std::string, int> _scoreboard;
+	std::string _playerName;
+	int _score;
     };
 }
 

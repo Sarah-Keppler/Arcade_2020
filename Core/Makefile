@@ -10,8 +10,8 @@ CC	=	g++
 RM	=	rm -rf
 
 PATH_CORE	=	./src/
-CORE	=	Loader.cpp	\
-		Core.cpp	\
+CORE	=	Loader.cpp			\
+		Core.cpp			\
 		main.cpp
 
 SRCS	=	$(addprefix $(PATH_CORE), $(CORE))	\
