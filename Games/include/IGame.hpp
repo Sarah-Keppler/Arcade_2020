@@ -9,22 +9,23 @@
 #include <vector>
 #include <string>
 #include <memory>
-#include "../../Common/ALib.hpp"
+#include "../../Common/ILib.hpp"
 #include "../../Graphs/include/IGraph.hpp"
+#include "../../Common/Arcade.hh"
 
 namespace Game
 {
-    class IGame : public Arcade::ALib
+    class IGame : public Arcade::ILib
     {
     public:
-	IGame(std::string name) : Arcade::ALib(Arcade::Type::GAME, name){};
-	~IGame() = default;
+	IGame() = default;
+	virtual ~IGame() = 0;
 
 	/**
 	 * @brief Load a scene and create all the components
 	 */
 	virtual void load(std::unique_ptr<Graph::IGraph> lib) const = 0;
-
+	
 	/**
 	 * @brief Retrieve the events and react if possitble immediately.
 	 *
@@ -37,9 +38,11 @@ namespace Game
 	 *
 	 * @param elapsed time.
 	 */
-	virtual void handleUpdate(float elapsedTime) const noexcept = 0; //perhaps an int
+	virtual void handleUpdate(double elapsedTime) const noexcept = 0;
     protected:
 	std::vector<Graph::IGraph> _lib;
+	Arcade::Keywords _evtType;
+	char _evt;
 	/*
 	  Note: Use  emplace_back instead of push_back to gain more performance
 	  Perhaps somethign else than a vector?
@@ -50,6 +53,35 @@ namespace Game
 	std::vector<Graph::Color> _color;
 	std::vector<Graph::Form> _form;
 	std::vector<Graph::Text> _text;
+    };
+
+    class AGame : protected IGame
+    {
+    public:
+	/**
+	 * @brief Set the type and the name of the library.
+	 *
+	 * @param type of the library.
+	 * @param name of the library.
+	 */
+	AGame(Arcade::Type const type, std::string const &name) noexcept;
+
+	/**
+	 * @brief Get the type of the library.
+	 *
+	 * @return type of the library.
+	 */
+	Arcade::Type getType() const noexcept;
+
+	/**
+	 * @brief Get the type of the name.
+	 *
+	 * @return name of the library.
+	 */
+	std::string getName() const noexcept;
+    protected:
+	Arcade::Type const _type;
+	std::string const _name;
     };
 }
 

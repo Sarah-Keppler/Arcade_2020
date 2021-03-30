@@ -10,12 +10,12 @@ CC	=	g++
 RM	=	rm -rf
 
 PATH_CORE	=	./src/
-CORE		=	Loader.cpp		\
-			Core.cpp		\
+CORE		=	Loader.cpp	\
+			Core.cpp	\
 			main.cpp
 
 PATH_COMMON	=	./../Common/
-COMMON		=	ALib.cpp		\
+COMMON		=	ALib.cpp	\
 			Error.cpp
 
 SRCS	=	$(addprefix $(PATH_CORE), $(CORE))	\
@@ -31,6 +31,10 @@ $(NAME): $(OBJS)
 	@$(CC) $(CXXFLAGS) $(SRCS) -o $(NAME) $(LDFLAGS)
 	@echo -e "\033[01;38;5;44m================Compiling: Core\033[0;0m"
 
+debug:
+	@$(CC) $(CXXFLAGS) -g $(SRCS) -o $(NAME) $(LDFLAGS)
+	@echo -e "\033[01;38;5;45m============Valgrind compilation: Done\033[0;0m"
+
 clean:
 	@$(RM) *~ vgcore.* ./include/*~ ./src/*~
 
@@ -39,8 +43,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
-
-debug:
-	@$(CC) $(CXXFLAGS) $(SRCS) -o $(NAME) $(LDFLAGS) -g
-	@echo -e "\033[01;38;5;45m============Valgrind compilation: Done\033[0;0m"
+.PHONY: all clean fclean re debug

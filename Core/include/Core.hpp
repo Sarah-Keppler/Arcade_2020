@@ -14,7 +14,7 @@
 #include "Loader.hpp"
 #include "../../Graphs/include/IGraph.hpp"
 #include "../../Games/include/IGame.hpp"
-#include "../../Common/ALib.hpp"
+#include "../../Common/ILib.hpp"
 #include "../../Common/Error.hpp"
 
 namespace Arcade
@@ -42,11 +42,11 @@ namespace Arcade
     private:
 	Arcade::Loader _loader;
 	std::vector<Graph::IGraph *> _graphs;
-	std::vector<std::unique_ptr<Game::IGame>> _games;
+	std::vector<Game::IGame *> _games;
 	std::size_t _cgraph, _cgame;
 	Arcade::Keywords _evtType;
 	char _evt;
-	std::map<std::string, int> _scoreBoard;
+	std::map<std::string, int> _scoreboard;
 	std::string _playerName;
 	int _score;
     };

@@ -1,8 +1,6 @@
 /*
-** EPITECH PROJECT, 2021
-** B-OOP-400-STG-4-1-arcade-sarah.keppler
-** File description:
-** IGraph
+** Arcade | Graph
+** Sarah-Keppler
 */
 
 #ifndef ARCADE_GRAPH_HPP
@@ -11,16 +9,16 @@
 #include <vector>
 #include <string>
 #include "Component.hpp"
-#include "../../Arcade.hh"
-#include "./../../Common/ALib.hpp"
+#include "../../Common/Arcade.hh"
+#include "../../Common/ILib.hpp"
 
 namespace Graph
 {
-    class IGraph : public Arcade::ALib
+    class IGraph : public Arcade::ILib
     {
     public:
-	IGraph(std::string name) : Arcade::ALib(Arcade::Type::GRAPH, name){};
-	~IGraph() = default;
+	IGraph() = default;
+	virtual ~IGraph() = 0;
 
 	/**
 	 * @brief Play the role of the constructor. Create the window.
@@ -50,6 +48,20 @@ namespace Graph
 	virtual void setIcon(std::string const &icon) const noexcept = 0;
 
 	/**
+	 * @brief Retrieve the current event.
+	 *
+	 * @return current event type.
+	 */
+	virtual Arcade::Keywords getEvent() const noexcept = 0;
+
+	/**
+	 * @brief Retrieve the letter pressed of the last event.
+	 *
+	 * @return letter pressed.
+	 */
+	virtual char getEventChar() const noexcept = 0;
+
+	/**
 	 * @brief Display an image (= pixel array) according to its components.
 	 * 
 	 * @param position.
@@ -58,6 +70,38 @@ namespace Graph
 	 * @param size.
 	 */
 	virtual void displayImage(Position &pos, Form &form, Color &color, Size &size) const = 0;
+    protected:
+	Arcade::Keywords _evtType;
+	char _evt;
+    };
+
+    class AGraph : protected IGraph
+    {
+    public:
+	/**
+	 * @brief Set the type and the name of the library.
+	 *
+	 * @param type of the library.
+	 * @param name of the library.
+	 */
+	AGraph(Arcade::Type const type, std::string const &name) noexcept;
+
+	/**
+	 * @brief Get the type of the library.
+	 *
+	 * @return type of the library.
+	 */
+	Arcade::Type getType() const noexcept;
+
+	/**
+	 * @brief Get the name of the library.
+	 *
+	 * @return name of the library.
+	 */
+	std::string getName() const noexcept;
+    protected:
+	Arcade::Type const _type;
+	std::string const _name;
     };
 }
 

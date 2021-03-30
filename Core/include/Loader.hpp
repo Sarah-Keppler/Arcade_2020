@@ -18,7 +18,7 @@
 namespace Arcade
 {
     /**
-     * @brief Instance of IGame ir IGraph
+     * @brief Instance of IGame or IGraph.
      */
     class Loader {
     public:
@@ -34,11 +34,10 @@ namespace Arcade
 	 *
 	 * @param library path.
 	 * @param end point name.
-	 * @param type type wanted if specified
 	 *
-	 * @return a pointer of the library class.
+	 * @return a unique pointer of the library class.
 	 */
-	Arcade::ALib *getInstance(std::string const &path, std::string const &name);
+	std::unique_ptr<Arcade::ALib> getInstance(std::string const &path, std::string const &name);
     private:
 	std::vector<void *> _handle;
     };

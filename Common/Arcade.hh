@@ -8,7 +8,7 @@
 
 #include <map>
 #include <array>
-#include "Graphs/include/Component.hpp"
+#include "../Graphs/include/Component.hpp"
 
 // uint8_t is from cstdint <- c library. Good idea?
 
@@ -16,7 +16,7 @@ namespace Arcade
 {
     enum class Type : uint8_t
     {
-	GAME,
+	GAME = 0,
 	GRAPH
     };
 

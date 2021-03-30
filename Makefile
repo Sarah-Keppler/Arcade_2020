@@ -24,6 +24,7 @@ games:
 	make -sC $(PATH_GAME)
 
 clean:
+	@rm -f *~ *.vgcore
 	@make -sC $(PATH_ARCADE) clean
 	@make -sC $(PATH_GRAPH) clean
 	@make -sC $(PATH_GAME) clean
@@ -37,4 +38,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: clean fclean re
+.PHONY: all clean fclean re core graphicals games
