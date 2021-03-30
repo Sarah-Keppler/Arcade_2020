@@ -14,21 +14,18 @@ namespace Graph
     struct Life : public IComponent
     {
 	Life(std::size_t life, std::size_t maxLife) : _life(life), _maxLife(maxLife){};
-
 	std::size_t _life, _maxLife;
     };
 
     struct Position : public IComponent
     {
 	Position(std::size_t x, std::size_t y) : _x(x), _y(y){};
-
 	int _x, _y;
     };
 
     struct Size : public IComponent
     {
 	Size(std::size_t x, std::size_t y) : _x(x), _y(y){};
-
 	std::size_t _x, _y;
     };
 
@@ -43,7 +40,6 @@ namespace Graph
     struct Form : public IComponent
     {
 	Form(std::size_t idx, std::string spe) : _idx(idx), _spe(spe){};
-
 	std::size_t _idx;
 	std::string _spe;
     };
@@ -51,7 +47,6 @@ namespace Graph
     struct Text : public IComponent
     {
 	Text(std::string text) : _text(text){};
-
 	std::string _text;
     };
 

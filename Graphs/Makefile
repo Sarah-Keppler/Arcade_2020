@@ -11,81 +11,81 @@ RM	=	rm -rf
 
 
 NAME_NCURSES	=	arcade_ncurses.so
-NCURSES		=	./src/NCurses.cpp	\
-			./src/AGraph.cpp  	\
-			../Error/Error.cpp
+NCURSES		=	./src/NCurses.cpp		\
+			./../Common/ALib.cpp  		\
+			./../Common/Error.cpp
 OBJ_NCURSES	=	$(NCURSES:.cpp=.o)
 
 NAME_SDL2	=	arcade_sdl2.so
-SDL2		=	./src/SDL2.cpp 		\
-			./src/AGraph.cpp  	\
-			../Error/Error.cpp
+SDL2		=	./src/SDL2.cpp 			\
+			./../Common/ALib.cpp  		\
+			./../Common/Error.cpp
 OBJ_SDL2	=	$(SDL2:.cpp=.o)
 
 NAME_NDK	=	arcade_ndk++.so
-NDK		=	./src/NDK++.cpp 	\
-			./src/AGraph.cpp  	\
-			../Error/Error.cpp
+NDK		=	./src/NDK++.cpp 		\
+			./../Common/ALib.cpp  		\
+			./../Common/Error.cpp
 OBJ_NDK		=	$(NDK:.cpp=.o)
 
 NAME_AA-LIB	=	arcade_aalib.so
-AA-LIB		=	./src/aa-lib.cpp 	\
-			./src/AGraph.cpp  	\
-			../Error/Error.cpp
+AA-LIB		=	./src/aa-lib.cpp 		\
+			./../Common/ALib.cpp  		\
+			./../Common/Error.cpp
 OBJ_AA-LIB	=	$(AA-LIB:.cpp=.o)
 
 NAME_LIBCACA	=	arcade_libcaca.so
-LIBCACA		=	./src/Libcaca.cpp 	\
-			./src/AGraph.cpp  	\
-			../Error/Error.cpp
+LIBCACA		=	./src/Libcaca.cpp 		\
+			./../Common/ALib.cpp  		\
+			./../Common/Error.cpp
 OBJ_LIBCACA	=	$(LIBCACA:.cpp=.o)
 
 NAME_ALLEGRO5	=	arcade_allegro5.so
-ALLEGRO5	=	./src/Allegro5.cpp 	\
-			./src/AGraph.cpp  	\
-			../Error/Error.cpp
+ALLEGRO5	=	./src/Allegro5.cpp 		\
+			./../Common/ALib.cpp  		\
+			./../Common/Error.cpp
 OBJ_ALLEGRO5	=	$(ALLEGRO5:.cpp=.o)
 
 NAME_XLIB	=	arcade_xlib.so
-XLIB		=	./src/XLib.cpp 		\
-			./src/AGraph.cpp  	\
-			../Error/Error.cpp
+XLIB		=	./src/XLib.cpp 			\
+			./../Common/ALib.cpp  		\
+			./../Common/Error.cpp
 OBJ_XLIB	=	$(XLIB:.cpp=.o)
 
 NAME_GTK	=	arcade_gtk+.so
-GTK		=	./src/GTK+.cpp 		\
-			./src/AGraph.cpp  	\
-			../Error/Error.cpp
+GTK		=	./src/GTK+.cpp 			\
+			./../Common/ALib.cpp  		\
+			./../Common/Error.cpp
 OBJ_GTK		=	$(GTK:.cpp=.o)
 
 NAME_SFML	=	arcade_sfml.so
-SFML		=	./src/SFML.cpp 		\
-			./src/AGraph.cpp  	\
-			../Error/Error.cpp
+SFML		=	./src/SFML.cpp 			\
+			./../Common/ALib.cpp  		\
+			./../Common/Error.cpp
 OBJ_SFML	=	$(SFML:.cpp=.o)
 
 NAME_IRRLICHT	=	arcade_irrlicht.so
-IRRLICHT	=	./src/Irrlicht.cpp 	\
-			./src/AGraph.cpp  	\
-			../Error/Error.cpp
+IRRLICHT	=	./src/Irrlicht.cpp 		\
+			./../Common/ALib.cpp  		\
+			./../Common/Error.cpp
 OBJ_IRRLICHT	=	$(IRRLICHT:.cpp=.o)
 
 NAME_OPENGL	=	arcade_opengl.so
-OPENGL		=	./src/OpenGL.cpp 	\
-			./src/AGraph.cpp  	\
-			../Error/Error.cpp
+OPENGL		=	./src/OpenGL.cpp 		\
+			./../Common/ALib.cpp  		\
+			./../Common/Error.cpp
 OBJ_OPENGL	=	$(OPENGL:.cpp=.o)
 
 NAME_VULKAN	=	arcade_vulkan.so
-VULKAN		=	./src/Vulkan.cpp 	\
-			./src/AGraph.cpp  	\
-			../Error/Error.cpp
+VULKAN		=	./src/Vulkan.cpp 		\
+			./../Common/ALib.cpp  		\
+			./../Common/Error.cpp
 OBJ_VULKAN	=	$(VULKAN:.cpp=.o)
 
 NAME_QT5	=	arcade_qt5.so
-QT5		=	./src/Qt5.cpp 		\
-			./src/AGraph.cpp  	\
-			../Error/Error.cpp
+QT5		=	./src/Qt5.cpp 			\
+			./../Common/ALib.cpp  		\
+			./../Common/Error.cpp
 OBJ_QT5		=	$(QT5:.cpp=.o)
 
 
@@ -93,7 +93,8 @@ CXXFLAGS 	+= 	-Wall -Wextra -Werror -I./include/ -fPIC
 
 LDFLAGS		+=	-shared
 
-all: ncurses sdl2 ndk++ aa-lib libcaca allegro5 xlib gtk+ sfml irrlicht opengl vulkan gt5
+all: ncurses sfml
+#sdl2 ndk++ aa-lib libcaca allegro5 xlib gtk+ irrlicht opengl vulkan gt5
 
 ncurses: $(OBJ_NCURSES)
 	@$(CC) $(CXXFLAGS) $(NCURSES) $(LDFLAGS) -o $(NAME_NCURSES)

@@ -10,9 +10,12 @@
 #include <string>
 #include <memory>
 #include <map>
+#include <iostream>
 #include "Loader.hpp"
 #include "../../Graphs/include/IGraph.hpp"
 #include "../../Games/include/IGame.hpp"
+#include "../../Common/ALib.hpp"
+#include "../../Common/Error.hpp"
 
 namespace Arcade
 {
@@ -37,14 +40,13 @@ namespace Arcade
 	 */
 	void run();
     private:
-	Arcade::Loader<Graph::IGraph> _graphLoader;
-	Arcade::Loader<Game::IGame> _gameLoader;
-      	std::vector<std::unique_ptr<Graph::IGraph>> _graphs;
+	Arcade::Loader _loader;
+	std::vector<Graph::IGraph *> _graphs;
 	std::vector<std::unique_ptr<Game::IGame>> _games;
 	std::size_t _cgraph, _cgame;
 	Arcade::Keywords _evtType;
 	char _evt;
-	std::map<std::string, int> _scoreboard;
+	std::map<std::string, int> _scoreBoard;
 	std::string _playerName;
 	int _score;
     };

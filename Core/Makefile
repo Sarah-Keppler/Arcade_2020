@@ -10,16 +10,20 @@ CC	=	g++
 RM	=	rm -rf
 
 PATH_CORE	=	./src/
-CORE	=	Loader.cpp			\
-		Core.cpp			\
-		main.cpp
+CORE		=	Loader.cpp		\
+			Core.cpp		\
+			main.cpp
+
+PATH_COMMON	=	./../Common/
+COMMON		=	ALib.cpp		\
+			Error.cpp
 
 SRCS	=	$(addprefix $(PATH_CORE), $(CORE))	\
-		../Error/Error.cpp
+		$(addprefix $(PATH_COMMON), $(COMMON))
 
 OBJS	=	 $(SRC:.cpp=.o)
 
-CXXFLAGS += 	-Wall -Wextra -Werror -I./include/
+CXXFLAGS += 	-Wall -Wextra -Werror -I./include/ -ldl
 
 all: $(NAME)
 
@@ -36,3 +40,7 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
+
+debug:
+	@$(CC) $(CXXFLAGS) $(SRCS) -o $(NAME) $(LDFLAGS) -g
+	@echo -e "\033[01;38;5;45m============Valgrind compilation: Done\033[0;0m"

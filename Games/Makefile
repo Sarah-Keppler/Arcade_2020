@@ -11,33 +11,33 @@ RM	=	rm -rf
 
 
 NAME_NIBBLER	=	arcade_nibbler.so
-NIBBLER		=	./src/Nibbler.cpp 	\
-			./src/AGame.cpp		\
-			../Error/Error.cpp
+NIBBLER		=	./src/Nibbler.cpp 		\
+			./../Common/ALib.cpp  		\
+			./../Common/Error.cpp
 OBJ_NIBBLER	=	$(NIBBLER:.cpp=.o)
 
 NAME_PACMAN	=	arcade_pacman.so
-PACMAN		=	./src/Pacman.cpp 	\
-			./src/AGame.cpp		\
-			../Error/Error.cpp
+PACMAN		=	./src/Pacman.cpp 		\
+			./../Common/ALib.cpp  		\
+			./../Common/Error.cpp
 OBJ_PACMAN	=	$(PACMAN:.cpp=.o)
 
 NAME_QIX	=	arcade_qix++.so
-QIX		=	./src/Qix.cpp 		\
-			./src/AGame.cpp		\
-			../Error/Error.cpp
+QIX		=	./src/Qix.cpp 			\
+			./../Common/ALib.cpp  		\
+			./../Common/Error.cpp
 OBJ_QIX		=	$(QIX:.cpp=.o)
 
 NAME_CENTIPEDE	=	arcade_centipede.so
-CENTIPEDE	=	./src/Centipede.cpp 	\
-			./src/AGame.cpp		\
-			../Error/Error.cpp
+CENTIPEDE	=	./src/Centipede.cpp 		\
+			./../Common/ALib.cpp  		\
+			./../Common/Error.cpp
 OBJ_CENTIPEDE	=	$(CENTIPEDE:.cpp=.o)
 
 NAME_SOLARFOX	=	arcade_solarfox.so
-SOLARFOX	=	./src/Solarfox.cpp 	\
-			./src/AGame.cpp		\
-			../Error/Error.cpp
+SOLARFOX	=	./src/Solarfox.cpp 		\
+			./../Common/ALib.cpp  		\
+			./../Common/Error.cpp
 OBJ_SOLARFOX	=	$(SOLARFOX:.cpp=.o)
 
 
@@ -45,7 +45,8 @@ CXXFLAGS 	+= 	-Wall -Wextra -Werror -I./include/ -fPIC
 
 LDFLAGS		+=	-shared
 
-all: nibbler pacman qix centipede solarfox
+all: pacman
+# nibbler qix centipede solarfox
 
 nibbler: $(OBJ_NIBBLER)
 	@$(CC) $(CXXFLAGS) $(NIBBLER) $(LDFLAGS) -o $(NAME_NIBBLER)

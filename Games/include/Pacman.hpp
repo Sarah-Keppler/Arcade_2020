@@ -1,43 +1,45 @@
 /*
-** Arcade | Games
-** Sarah-Keppler
+** EPITECH PROJECT, 2021
+** B-OOP-400-STG-4-1-arcade-sarah.keppler
+** File description:
+** Pacman
 */
 
-#ifndef ARCADE_GAME_HPP
-#define ARCADE_GAME_HPP
+#ifndef PACMAN_HPP
+#define PACMAN_HPP
 
 #include <vector>
 #include <string>
 #include <memory>
-#include "../../Common/ALib.hpp"
+#include "IGame.hpp"
 #include "../../Graphs/include/IGraph.hpp"
 
 namespace Game
 {
-    class IGame : public Arcade::ALib
+    class Pacman : public IGame
     {
     public:
-	IGame(std::string name) : Arcade::ALib(Arcade::Type::GAME, name){};
-	~IGame() = default;
+	Pacman();
+	virtual ~Pacman();
 
 	/**
 	 * @brief Load a scene and create all the components
 	 */
-	virtual void load(std::unique_ptr<Graph::IGraph> lib) const = 0;
+	virtual void load(std::unique_ptr<Graph::IGraph> lib) const;
 
 	/**
 	 * @brief Retrieve the events and react if possitble immediately.
 	 *
 	 * @return event type.
 	 */
-	virtual Arcade::Keywords handleEvents() const noexcept = 0;
+	virtual Arcade::Keywords handleEvents() const noexcept;
 
 	/**
 	 * @brief React to the events related on the elapsed time and simulate the game.
 	 *
 	 * @param elapsed time.
 	 */
-	virtual void handleUpdate(float elapsedTime) const noexcept = 0; //perhaps an int
+	virtual void handleUpdate(float elapsedTime) const noexcept; //perhaps an int
     protected:
 	std::vector<Graph::IGraph> _lib;
 	/*
@@ -53,26 +55,11 @@ namespace Game
     };
 }
 
-// Add in sub classes. Why not a unique_ptr instead of a pointer?
-/*
-SFMLController *sfml = nullptr;
+/**
+ * @brief end point of the library.
+ *
+ * @return Must return an unique_ptr of the graphic library class
+ */
+extern "C" Game::IGame *endPoint(void);
 
-__attribute__((constructor))
-void start(void)
-{
-    smfl = new SFMLController();
-}
-
-__attribute__((destructor))
-void end(void)
-{
-    delete smfl;
-}
-
-extern "C" SFMLController *endPoint(void)
-{
-    return (smfl);
-}
-*/
-
-#endif /* ARCADE_GAME_HPP */
+#endif /* PACMAN_HPP */

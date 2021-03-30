@@ -1,6 +1,8 @@
 /*
-** Arcade | Graph
-** Sarah-Keppler
+** EPITECH PROJECT, 2021
+** B-OOP-400-STG-4-1-arcade-sarah.keppler
+** File description:
+** IGraph
 */
 
 #ifndef ARCADE_GRAPH_HPP
@@ -10,13 +12,14 @@
 #include <string>
 #include "Component.hpp"
 #include "../../Arcade.hh"
+#include "./../../Common/ALib.hpp"
 
 namespace Graph
 {
-    class IGraph
+    class IGraph : public Arcade::ALib
     {
     public:
-	IGraph() = default;
+	IGraph(std::string name) : Arcade::ALib(Arcade::Type::GRAPH, name){};
 	~IGraph() = default;
 
 	/**
@@ -33,16 +36,6 @@ namespace Graph
 	virtual void close() const = 0;
 
 	/**
-	 * @brief Get the library type.
-	 */
-	virtual Arcade::Type getType() const noexcept = 0;
-
-	/**
-	 * @brief Get the library name.
-	 */
-	virtual std::string getName() const noexcept = 0;
-
-	/**
 	 * @brief Change the title of the window.
 	 * 
 	 * @param new window title.
@@ -57,20 +50,6 @@ namespace Graph
 	virtual void setIcon(std::string const &icon) const noexcept = 0;
 
 	/**
-	 * @brief Retrieve the current event.
-	 *
-	 * @return current event type.
-	 */
-	virtual Arcade::Keywords getEvent() const noexcept = 0;
-
-	/**
-	 * @brief Retrive the letter key of the last event.
-	 *
-	 * @return char of the letter key.
-A	 */
-	virtual char getEventChar() const noexcept = 0;
-
-	/**
 	 * @brief Display an image (= pixel array) according to its components.
 	 * 
 	 * @param position.
@@ -78,35 +57,7 @@ A	 */
 	 * @param color.
 	 * @param size.
 	 */
-	virtual void displayImage(Graph::Position &pos, Graph::Form &form, Graph::Color &color, Graph::Size &size) const = 0;
-    protected:
-	Arcade::Keywords _evtType;
-	char _evt;
-    };
-
-    class AGraph : public IGraph
-    {
-    public:
-        /**
-	 * @brief Set the type and the name of the library.
-	 *
-	 * @param type of the library.
-	 * @param name of the library.
-	 */
-	AGraph(Arcade::Type const type, std::string const &name) noexcept;
-	
-	/**
-	 * @brief Get the library type.
-	 */
-	Arcade::Type getType() const noexcept;
-
-	/**
-	 * @brief Get the library name.
-	 */
-	std::string getName() const noexcept;
-    protected:
-	Arcade::Type const _type;
-	std::string const _name;
+	virtual void displayImage(Position &pos, Form &form, Color &color, Size &size) const = 0;
     };
 }
 

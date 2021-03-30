@@ -3,11 +3,11 @@
 ** Sarah-Keppler
 */
 
-#ifndef ARCADE_HH
-#define ARCADE_HH
+#ifndef ARCADE_HH_
+#define ARCADE_HH_
 
-#include <array>
 #include <map>
+#include <array>
 #include "Graphs/include/Component.hpp"
 
 // uint8_t is from cstdint <- c library. Good idea?
@@ -16,7 +16,7 @@ namespace Arcade
 {
     enum class Type : uint8_t
     {
-	GAME = 0,
+	GAME,
 	GRAPH
     };
 
@@ -79,4 +79,4 @@ namespace Arcade
     };
 }
 
-#endif /* ARCADE_HH */
+#endif /* !ARCADE_HH_ */

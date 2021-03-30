@@ -9,13 +9,17 @@
 #include <string>
 #include <vector>
 #include <memory>
+#include <fcntl.h>
+#include <dlfcn.h>
+#include "../../Common/Error.hpp"
+#include "../../Games/include/IGame.hpp"
+#include "../../Graphs/include/IGraph.hpp"
 
 namespace Arcade
 {
     /**
-     * @brief Instance of IGame ir IGraphLib
+     * @brief Instance of IGame ir IGraph
      */
-    template<typename T>
     class Loader {
     public:
 	Loader() = default;
@@ -30,10 +34,11 @@ namespace Arcade
 	 *
 	 * @param library path.
 	 * @param end point name.
+	 * @param type type wanted if specified
 	 *
 	 * @return a pointer of the library class.
 	 */
-	std::unique_ptr<T> getInstance(std::string const &path, std::string const &endPoint);
+	Arcade::ALib *getInstance(std::string const &path, std::string const &name);
     private:
 	std::vector<void *> _handle;
     };

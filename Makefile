@@ -24,20 +24,17 @@ games:
 	make -sC $(PATH_GAME)
 
 clean:
-	@rm -f *~ *.vgcore
 	@make -sC $(PATH_ARCADE) clean
 	@make -sC $(PATH_GRAPH) clean
 	@make -sC $(PATH_GAME) clean
 
 fclean: clean
+	@$(RM) *~ *vgcore.
 	@$(RM) *~ arcade ./lib/*.so
 	@make -sC $(PATH_ARCADE) fclean
 	@make -sC $(PATH_GRAPH) fclean
 	@make -sC $(PATH_GAME) fclean
 
 re: fclean all
-	@make -sC $(PATH_ARCADE) re
-	@make -sC $(PATH_GRAPH) re
-	@make -sC $(PATH_GAME) re
 
-.PHONY: all clean fclean re core graphicals games
+.PHONY: clean fclean re
