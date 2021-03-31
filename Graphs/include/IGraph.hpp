@@ -26,7 +26,7 @@ namespace Graph
 	 * @param window title.
 	 * @param window icon.
 	 */
-	virtual void open(std::string const title = "", std::string const icon = "") const = 0;
+	virtual void open(std::string const &title = "", std::string const &icon = "") const = 0;
 
 	/**
 	 * @brief Play the role of the deconstructor. Destroy all the components.
