@@ -10,6 +10,7 @@
 #include <string>
 #include <memory>
 #include <map>
+#include <chrono>
 #include <iostream>
 #include "Loader.hpp"
 #include "../../Graphs/include/IGraph.hpp"
@@ -44,6 +45,8 @@ namespace Arcade
 	std::vector<Graph::IGraph *> _graphs;
 	std::vector<Game::IGame *> _games;
 	std::size_t _cgraph, _cgame;
+	// Menu menu;
+	std::chrono _chrono;
 	Arcade::Keywords _evtType;
 	char _evt;
 	std::map<std::string, int> _scoreboard;

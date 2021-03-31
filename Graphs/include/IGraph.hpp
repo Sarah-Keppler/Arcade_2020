@@ -61,6 +61,8 @@ namespace Graph
 	 */
 	virtual char getEventChar() const noexcept = 0;
 
+	//int verify_collision()
+
 	/**
 	 * @brief Display an image (= pixel array) according to its components.
 	 * 
