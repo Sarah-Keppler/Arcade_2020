@@ -9,57 +9,53 @@
 #include <string>
 #include "IComponent.hpp"
 
+namespace Arcade
+{
+    enum class FormIdx : uint8_t
+    {
+	RECT = 0,
+	OTHER
+    };
+}
+
 namespace Graph
 {
-    struct Life : public IComponent
-    {
-	Life(std::size_t life, std::size_t maxLife) : _life(life), _maxLife(maxLife){};
-
-	std::size_t _life, _maxLife;
-    };
-
     struct Position : public IComponent
     {
-	Position(std::size_t x, std::size_t y) : _x(x), _y(y){};
+	Position(int x = 0, int y = 0) : _x{x}, _y{y} {};
 
 	int _x, _y;
     };
 
     struct Size : public IComponent
     {
-	Size(std::size_t x, std::size_t y) : _x(x), _y(y){};
+	Size(std::size_t x = 0, std::size_t y = 0) : _width{x}, _height{y} {};
 
-	std::size_t _x, _y;
+	std::size_t _width, _height;
     };
 
     struct Color : public IComponent
     {
-	Color(unsigned char r, unsigned char g, unsigned char b) noexcept
-	 : _r(r), _g(g), _b(b){};
+	Color(std::size_t r = 0, std::size_t g = 0, std::size_t b = 0, std::size_t a = 0) noexcept
+	    : _r{r}, _g{g}, _b{b}, _a{a}{};
 
-	unsigned char _r, _g, _b;
+	std::size_t _r, _g, _b, _a;
     };
 
     struct Form : public IComponent
     {
-	Form(std::size_t idx, std::string spe) : _idx(idx), _spe(spe){};
+	Form(Arcade::FormIdx idx = Arcade::FormIdx::OTHER, std::string path = "") : _idx{idx}, _path{path} {};
 
-	std::size_t _idx;
-	std::string _spe;
+	Arcade::FormIdx _idx;
+	std::string _path;
     };
 
     struct Text : public IComponent
     {
-	Text(std::string text) : _text(text){};
+	Text(std::string text) : _text{text}{};
 
 	std::string _text;
     };
-
-    /*
-     * The event component may appear in the future.
-     * It is a script. For instance, the script when Pacman touch an enemy or when, as a snake, you eat an apple.
-     * Still in development.
-     */
 }
 
 #endif /* ARCADE_GRAPH_COMPONENT */

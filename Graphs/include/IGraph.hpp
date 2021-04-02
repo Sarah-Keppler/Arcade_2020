@@ -18,7 +18,7 @@ namespace Graph
     {
     public:
 	IGraph() = default;
-	virtual ~IGraph() = 0;
+	~IGraph() = default;
 
 	/**
 	 * @brief Play the role of the constructor. Create the window.
@@ -26,7 +26,7 @@ namespace Graph
 	 * @param window title.
 	 * @param window icon.
 	 */
-	virtual void open(std::string const &title = "", std::string const &icon = "") const = 0;
+	virtual void open(std::string const &title = "", std::string const &icon = "") = 0;
 
 	/**
 	 * @brief Play the role of the deconstructor. Destroy all the components.
@@ -38,21 +38,21 @@ namespace Graph
 	 * 
 	 * @param new window title.
 	 */
-	virtual void setTitle(std::string const &title) const noexcept = 0;
+	virtual void setTitle(std::string const &title) noexcept = 0;
 
 	/**
 	 * @brief Change the icon of the window.
 	 * 
 	 * @param new window icon.
 	 */
-	virtual void setIcon(std::string const &icon) const noexcept = 0;
+	virtual void setIcon(std::string const &icon) = 0;
 
 	/**
 	 * @brief Retrieve the current event.
 	 *
 	 * @return current event type.
 	 */
-	virtual Arcade::Keywords getEvent() const noexcept = 0;
+	virtual Arcade::Events getEvent() noexcept = 0;
 
 	/**
 	 * @brief Retrieve the letter pressed of the last event.
@@ -61,8 +61,23 @@ namespace Graph
 	 */
 	virtual char getEventChar() const noexcept = 0;
 
-	//int verify_collision()
+	/**
+	 * @brief Check if there is a collision between two entities.
+	 *
+	 * @param position of the first entity.
+	 * @param size of the first entity.
+	 * @param position of second entity.
+	 * @param size of the second entity.
+	 *
+	 * @return 1 if there is a collision, 0 otherwise.
+	 */
+	virtual int checkCollision(Position const &pos1, Size const &size1, Position const &pos2, Size const &size2) const noexcept = 0;
 
+	/**
+	 * @brief Display the window after clearing it.
+	 */
+	virtual void displayWindow() noexcept = 0;
+	
 	/**
 	 * @brief Display an image (= pixel array) according to its components.
 	 * 
@@ -71,9 +86,9 @@ namespace Graph
 	 * @param color.
 	 * @param size.
 	 */
-	virtual void displayImage(Position &pos, Form &form, Color &color, Size &size) const = 0;
+	virtual void displayImage(Position &pos, Form &form, Color &color, Size &size) = 0;
     protected:
-	Arcade::Keywords _evtType;
+	Arcade::Events _evtType;
 	char _evt;
     };
 
@@ -87,6 +102,7 @@ namespace Graph
 	 * @param name of the library.
 	 */
 	AGraph(Arcade::Type const type, std::string const &name) noexcept;
+	~AGraph() = default;
 
 	/**
 	 * @brief Get the type of the library.
